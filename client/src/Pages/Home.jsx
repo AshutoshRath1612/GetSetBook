@@ -30,6 +30,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  overflow-x: hidden;
   .homeTitle{
     font-size: 2rem;
     font-family: "Oxygen", sans-serif;
