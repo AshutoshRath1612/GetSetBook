@@ -37,6 +37,7 @@ const Container = styled.div`
           border: none;
           border-radius: 10px;
           background-color: #d5d2e5;
+          color: black;
           padding: 1rem;
           margin-right: 1rem;
           font-size: 1rem;

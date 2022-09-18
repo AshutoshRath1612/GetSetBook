@@ -211,6 +211,7 @@ const Container = styled.div`
       .headerSearchInput {
         border: none;
         cursor: pointer;
+        background-color: white;
       }
       .headerSearchText {
         color: gray;
