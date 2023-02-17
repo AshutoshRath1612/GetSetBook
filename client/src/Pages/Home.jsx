@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import Featured from "../Components/Featured"
+import Footer from "../Components/Footer"
 import GuestLoveProperty from "../Components/GuestLoveProperty"
 import Header from "../Components/Header"
 import MailList from "../Components/MailList"
@@ -19,6 +20,7 @@ const Home = () => {
            <h1 className="homeTitle">Homes Guests Love</h1>
            <GuestLoveProperty />
            <MailList />
+           <Footer />
       </Container>
     </div>
   )
