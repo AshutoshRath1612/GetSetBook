@@ -19,9 +19,9 @@ const Home = () => {
            <PropertyLists />
            <h1 className="homeTitle">Homes Guests Love</h1>
            <GuestLoveProperty />
+      </Container>
            <MailList />
            <Footer />
-      </Container>
     </div>
   )
 }
