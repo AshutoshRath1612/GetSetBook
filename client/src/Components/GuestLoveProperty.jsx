@@ -14,7 +14,7 @@ const GuestLoveProperty = () => {
         />
         <span className="fpName">Aparthotel Stare Miasto</span>
         <span className="fpCity">Madrid</span>
-        <span className="fpPrice">Starting from $120</span>
+        <span className="fpPrice">Starting from ₹1200</span>
         <div className="fpRating">
           <button>
             <FontAwesomeIcon
@@ -34,7 +34,7 @@ const GuestLoveProperty = () => {
         />
         <span className="fpName">Comfort Suites Airport</span>
         <span className="fpCity">Austin</span>
-        <span className="fpPrice">Starting from $140</span>
+        <span className="fpPrice">Starting from ₹2000</span>
         <div className="fpRating">
           <button>
             <FontAwesomeIcon
@@ -48,13 +48,13 @@ const GuestLoveProperty = () => {
       </div>
       <div className="fpItem">
         <img
-          src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/232902339.jpg?k=3947def526b8af0429568b44f9716e79667d640842c48de5e66fd2a8b776accd&o=&hp=1"
+          src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/322658536.jpg?k=3fffe63a365fd0ccdc59210188e55188cdb7448b9ec1ddb71b0843172138ec07&o=&hp=1"
           alt=""
           className="fpImg"
         />
         <span className="fpName">Four Seasons Hotel</span>
         <span className="fpCity">Lisbon</span>
-        <span className="fpPrice">Starting from $99</span>
+        <span className="fpPrice">Starting from ₹4000</span>
         <div className="fpRating">
           <button>
             <FontAwesomeIcon
@@ -74,7 +74,7 @@ const GuestLoveProperty = () => {
         />
         <span className="fpName">Hilton Garden Inn</span>
         <span className="fpCity">Berlin</span>
-        <span className="fpPrice">Starting from $105</span>
+        <span className="fpPrice">Starting from ₹5000</span>
         <div className="fpRating">
           <button>
             <FontAwesomeIcon
