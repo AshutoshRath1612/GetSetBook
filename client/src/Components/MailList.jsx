@@ -17,7 +17,7 @@ const MailList = () => {
 };
 
 const Container = styled.div`
-  width: 100%;
+  width: auto;
   margin-top: 50px;
   background-color: #4d4d78;
   color: white;
@@ -51,7 +51,7 @@ const Container = styled.div`
       border: none;
       font-weight: bolder;
       cursor: pointer;
-      border-radius:10px;
+      border-radius: 10px;
     }
   }
 `;
