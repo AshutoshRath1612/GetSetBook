@@ -9,7 +9,7 @@ import styled from "styled-components";
 import Header from "../Components/Header";
 import Navbar from "../Components/Navbar";
 import Searchitem from "../Components/Searchitem";
-
+import useFetch from "../hooks/useFetch";
 
 const List = () => {
   const location = useLocation();
@@ -18,7 +18,8 @@ const List = () => {
   const [date, setDate] = useState(location.state.date);
   const [openDate, setOpenDate] = useState(false);
   const [options, setoptions] = useState(location.state.options);
-  console.log(options.adult)
+  
+  const {data,loading,error,refetch} = useFetch(`hotels?city=${destination}`)
   return (
     <div>
       <Navbar />
@@ -83,14 +84,11 @@ const List = () => {
               <button className="search">Search</button>
             </div>
             <div className="listResult">
-              <Searchitem></Searchitem>
-              <Searchitem></Searchitem>
-              <Searchitem></Searchitem>
-              <Searchitem></Searchitem>
-              <Searchitem></Searchitem>
-              <Searchitem></Searchitem>
-              <Searchitem></Searchitem>
-              <Searchitem></Searchitem>
+              {loading ? "Loading" : <>
+              {data.map((item)=>(
+                <Searchitem key= {item._id} item={item}></Searchitem>
+              ))}
+              </>}
             </div>
           </div>
         </div>
