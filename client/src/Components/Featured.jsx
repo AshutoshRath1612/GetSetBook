@@ -1,18 +1,22 @@
 import React from "react";
 import styled from "styled-components";
+import useFetch from "../hooks/useFetch";
 
 const Featured = () => {
+  const {data,loading,error} = useFetch("hotels/find/countByCity?cities=bbsr,ctc,puri");
+
+  console.log(data)
   return (
     <Container>
-      <div className="featuredItem">
+      {loading? "Loading Please Wait" : <> <div className="featuredItem">
         <img
           src="https://resize.indiatvnews.com/en/resize/newbucket/730_-/2021/08/purijagannath-pti-1628089644.jpg"
           alt=""
           className="featuredImg"
         />
         <div className="featuredTitles">
-          <h1>Puri</h1>
-          <h2>23 properties</h2>
+          <h1>Bhubaneswar</h1>
+          <h2>{data[0]} properties</h2>
         </div>
       </div>
 
@@ -23,8 +27,8 @@ const Featured = () => {
           className="featuredImg"
         />
         <div className="featuredTitles">
-          <h1>Rourkela</h1>
-          <h2>30 properties</h2>
+          <h1>Cuttack</h1>
+          <h2>{data[1]} properties</h2>
         </div>
       </div>
       <div className="featuredItem">
@@ -34,10 +38,10 @@ const Featured = () => {
           className="featuredImg"
         />
         <div className="featuredTitles">
-          <h1>Mumbai</h1>
-          <h2>132 properties</h2>
+          <h1>Puri</h1>
+          <h2>{data[2]} properties</h2>
         </div>
-      </div>
+      </div></>}
     </Container>
   );
 };
