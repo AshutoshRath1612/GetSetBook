@@ -7,6 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
@@ -14,6 +15,9 @@ import MailList from "../Components/MailList";
 import Navbar from "../Components/Navbar";
 
 const Hotel = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  console.log(id)
   const [slidenumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const photos = [
@@ -67,12 +71,12 @@ const Hotel = () => {
             <span className="hotelDistance">
               Excellent Location - 500m from center
             </span>
-            <sapn className="hotelPriceHighlight">
+            <span className="hotelPriceHighlight">
               Book a stay over 1200 at this property and get a free airport taxi
-            </sapn>
+            </span>
             <div className="hotelImages">
               {photos.map((photo, i) => (
-                <div className="hotelImgWrapper">
+                <div className="hotelImgWrapper" key={i}>
                   <img
                     onClick={() => handleOpen(i)}
                     src={photo.src}
