@@ -5,7 +5,7 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
@@ -13,6 +13,7 @@ import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import MailList from "../Components/MailList";
 import Navbar from "../Components/Navbar";
+import { SearchContext } from "../context/SearchContect";
 import useFetch from "../hooks/useFetch"
 
 const Hotel = () => {
@@ -22,6 +23,8 @@ const Hotel = () => {
   const [slidenumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
 
+  const {date} = useContext(SearchContext);
+  console.log(date)
   const  {data,loading , error} = useFetch(`/hotels/${id}`)
 
   const photos = [
