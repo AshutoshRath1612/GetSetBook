@@ -14,6 +14,7 @@ import "react-date-range/dist/theme/default.css";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../context/SearchContect";
+import { AuthContext } from "../context/AuthContext";
 
 const Header = ({type}) => {
   const navigate = useNavigate();
@@ -35,8 +36,7 @@ const Header = ({type}) => {
   });
 
   const {dispatch} = useContext(SearchContext);
-
-
+  const {user} = useContext(AuthContext);
   const changeOptions = (name, operation) => {
     setOptions({
       ...options,
@@ -74,7 +74,7 @@ const Header = ({type}) => {
           Get rewarded for your travels - unlock instant savings of 10% or more
           with a free GetSetBook account
         </p>
-        <button className="headerbtn">Sign in / Register</button>
+        {!user &&<button className="headerbtn">Sign in / Register</button>}
       </div>
       <div className="headerSearch">
         <div className="headerSearchItem">
