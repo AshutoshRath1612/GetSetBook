@@ -22,7 +22,6 @@ export const authRegister = async(req, res, next) => {
 
 };
 export const authLogin = async(req, res, next) => {
-    console.log("started")
     try{
         const user = await User.findOne({username: req.body.username})
         console.log(user)
@@ -40,7 +39,7 @@ export const authLogin = async(req, res, next) => {
             httpOnly:true,
         }).status(200).json({...others});
     }catch(err){
-        console.log(first)
+        console.log(err)
     }
     }
     catch(err){
