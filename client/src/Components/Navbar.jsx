@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 const Navbar = () => {
+  const {user} = useContext(AuthContext);
   return (
     <Container>
       <div className="navbar">
@@ -9,10 +11,10 @@ const Navbar = () => {
           <Link to="/" style={{color:"inherit" , textDecoration: "none"}}>
           <span className="logo">GetSetBook</span>
           </Link>
-          <div className="navItems">
+         {user ? user.username: (<div className="navItems">
             <button className="navButton">Register</button>
             <button className="navButton">Login</button>
-          </div>
+          </div>)}
         </div>
       </div>
     </Container>
