@@ -5,7 +5,7 @@ import useFetch from "../hooks/useFetch";
 const Featured = () => {
   const {data,loading,error} = useFetch("hotels/find/countByCity?cities=bbsr,ctc,puri");
 
-  console.log(data)
+
   return (
     <Container>
       {loading? "Loading Please Wait" : <> <div className="featuredItem">
