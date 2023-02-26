@@ -7,7 +7,7 @@ import { AuthContext } from '../context/AuthContext'
 const Login = () => {
     const navigate =useNavigate();
     const [credential,setCredential] = useState({
-        usermane : undefined,
+        username : undefined,
         password : undefined
     })
 
@@ -22,7 +22,8 @@ const Login = () => {
         e.preventDefault();
         dispatch({type:"LOGIN_START"})
         try{
-            const res = await axios.post("/auth/login",credential); 
+            const res = await axios.post("http://localhost:8800/auth/login", credential); 
+            console.log(res)
             dispatch({type:"LOGIN_SUCCESS",payload:res.data});
             navigate('/')
         }
@@ -35,7 +36,7 @@ const Login = () => {
        <div className="lContianer">
         <input type="text" placeholder='Username' id='username' onChange={(e)=>handleChange(e)} className="lInput" />
         <input type="text" placeholder='Password' id='password' onChange={(e)=>handleChange(e)} className="lInput" /> 
-        <button className="lButton">Login</button>
+        <button className="lButton" onClick={(e)=>handleClicks(e)}>Login</button>
         {error && <span>{error.message}</span>}
         </div> 
     </Container>
