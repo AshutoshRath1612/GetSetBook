@@ -7,25 +7,36 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import MailList from "../Components/MailList";
 import Navbar from "../Components/Navbar";
+import SelectRooms from "../Components/SelectRooms";
+import { AuthContext } from "../context/AuthContext";
 import { SearchContext } from "../context/SearchContect";
 import useFetch from "../hooks/useFetch"
 
 const Hotel = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  console.log(id)
   const [slidenumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openBook, setOpenBook] = useState(false);
 
-  const {date} = useContext(SearchContext);
-  console.log(date)
+  const {date , options} = useContext(SearchContext);
+  const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+  function dayDifference(date1, date2) {
+    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+    return diffDays;
+  }
+  const days = dayDifference(date[0].endDate, date[0].startDate);
   const  {data,loading , error} = useFetch(`/hotels/${id}`)
+
+  const {user} = useContext(AuthContext);
 
   const photos = [
     {
@@ -47,6 +58,14 @@ const Hotel = () => {
       src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707389.jpg?k=52156673f9eb6d5d99d3eed9386491a0465ce6f3b995f005ac71abc192dd5827&o=&hp=1",
     },
   ];
+
+  const handleClick = ()=>{
+    if(user){
+      setOpenBook(true);
+    }else{
+      navigate('/login');
+    }
+  }
 
   const handleOpen = (i) => {
     setSlideNumber(i);
@@ -101,15 +120,15 @@ const Hotel = () => {
                 </p>
               </div>
               <div className="hotelDetailsPrice">
-                <h1>Perfect for a 9-night stay!</h1>
+                <h1>Perfect for a {days}-night stay!</h1>
                 <span>
                   Located in the real heart of Krakow, this property has an
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>$945</b> (9 nights)
+                  <b>${days *data.cheapestPrice *options.room}</b> ({days} nights)
                 </h2>
-                <button>Reserve or Book Now!</button>
+                <button onClick={()=>handleClick()}>Reserve or Book Now!</button>
               </div>
             </div>
           </div>
@@ -117,6 +136,7 @@ const Hotel = () => {
       </Container>
       <MailList />
       <Footer />
+      {openBook && <SelectRooms setOpen={setOpen} hotelId={id} />}
     </div>
   );
 };
