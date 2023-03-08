@@ -37,14 +37,14 @@ const AuthReducer = (state , action)=>{
 
 export const AuthContextProvider = ({children})=>{
     const [state , dispatch] = useReducer(AuthReducer,INITIAL_STATE);
-
+    console.log(state)
     useEffect(()=>{
-        localStorage.setItem('user',JSON.stringify(state.user));
+        localStorage.setItem('user',JSON.stringify(state.username));
     })
     return(
         <AuthContext.Provider 
         value={{
-            user:state.user , 
+            user:state.username , 
             loading:state.loading , 
             error:state.error,
             dispatch}}>
