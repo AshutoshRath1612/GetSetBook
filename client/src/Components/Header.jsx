@@ -37,6 +37,7 @@ const Header = ({type}) => {
 
   const {dispatch} = useContext(SearchContext);
   const {user} = useContext(AuthContext);
+  console.log(user)
   const changeOptions = (name, operation) => {
     setOptions({
       ...options,
